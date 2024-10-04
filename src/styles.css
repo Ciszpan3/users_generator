@@ -1,0 +1,118 @@
+* {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0
+}
+
+body {
+    font-family: "Poppins", sans-serif;
+    font-weight: 600;
+    font-style: normal;
+    color: whitesmoke;
+    background-color: #111;
+}
+
+/* ANIMACJE */
+
+@keyframes slide-in {
+    0% {
+      opacity: 0;
+      transform: translateX(-100%);
+    }
+    100% {
+      opacity: 1;
+      transform: translateX(0);
+    }
+}
+
+@keyframes rotate {
+    0% {
+      --angle: 0deg
+    }
+    50% {
+      --angle: 230deg
+    }
+    100% {
+      --angle: 360deg
+    }
+}
+
+@keyframes show {
+    0% {
+      opacity: 0
+    }
+    30% {
+        opacity: .2
+    }
+    50% {
+        opacity: .4;
+    }
+    70% {
+        opacity: .6;
+    }
+    90% {
+        opacity: .8;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+@keyframes showPseudoClasses {
+    0% {
+      opacity: 0
+    }
+    100% {
+      opacity: 1
+    }
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+@keyframes jump {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+}
+
+@keyframes rotateBg {
+    0% {
+        --angle: 0deg;
+    }
+    100% {
+        --angle: 360deg;
+    }
+}
+
+@keyframes change-bg {
+    0% {
+        background-position: 0%;
+    }
+    100% {
+        background-position: 200%;
+    }
+}
+
+@keyframes slide-down {
+    0% {
+        opacity: 0;
+        transform: translateY(-200px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes border-sides {
+    0% {
+        --angle: 45deg;
+    }
+    50% {
+        --angle: 130deg
+    }
+    100% {
+        --angle: 45deg
+    }
+}

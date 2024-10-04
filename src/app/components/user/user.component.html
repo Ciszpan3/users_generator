@@ -1,0 +1,42 @@
+@if(user()?.isVisible) {
+    <div class="user_container" [@userAnimation]>
+        <p id="userNumber">{{userNumber()}}</p>
+        <header>
+            <p>{{userPrefix()}}</p>
+            <span>{{ user()?.hoveredValue }}</span>
+        </header>
+        <main>
+            <div class="icon_container">
+                <span #icon class="material-symbols-outlined icon" name="name" (mouseenter)="onHover($event)" data-icon="face">
+                    face
+                </span>
+            </div>
+            <div class="icon_container">
+                <span #icon class="material-symbols-outlined icon" name="email" (mouseenter)="onHover($event)" data-icon="mail">
+                    mail
+                </span>
+            </div>
+            <div class="icon_container">
+                <span #icon class="material-symbols-outlined icon" name="city" (mouseenter)="onHover($event)" data-icon="apartment">
+                    apartment
+                </span>
+            </div>
+            <div class="icon_container">
+                <span #icon  class="material-symbols-outlined icon" name="age" (mouseenter)="onHover($event)" data-icon="calendar_month">
+                    calendar_month
+                </span>
+            </div>
+            <div class="icon_container">
+                <span #icon class="material-symbols-outlined icon" name="phone" (mouseenter)="onHover($event)" data-icon="phone_in_talk">
+                    phone_in_talk
+                </span>
+            </div>
+        </main>
+        <footer>
+            <!-- <button (click)="onDeleteUser()">Delete User</button> -->
+            <app-btn-default (click)="onDeleteUser()" appBtnBg="#e74c3c">Delete User</app-btn-default>
+            <app-btn-default (click)="checkMore()" appBtnBg="#2980b9" style="margin-left: 3px;">Check More</app-btn-default>
+        </footer>
+    </div>
+}
+

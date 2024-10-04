@@ -1,0 +1,124 @@
+body {
+  font-family: sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #f4f4f4;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+}
+
+@property --angle {
+  syntax: '<angle>';
+  initial-value: 0deg;
+  inherits: false;
+}
+.container {
+  background-color: #1b1919;
+  border-radius: 8px;
+  padding: 20px;
+  width: 100%;
+  max-width: 450px;
+  margin: 3rem auto 0rem auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  /* animation: slide-in 1.5s cubic-bezier(.98,.06,.24,1.51); */
+}
+.container::before, .container::after {
+  visibility: hidden;
+}
+.container.animationed::before, .container.animationed::after {
+  visibility: visible;
+}
+.container::before, .container::after {
+  content: '';
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  translate: -50% -50%;
+  background: conic-gradient(from var(--angle),black, white, black, blue);
+  z-index: -1;
+  border-radius: 8px;
+  padding: 3px 3px 3px 4px;
+  animation: rotate 3s linear infinite, show 2s ease-in-out;
+}
+.container::before {
+  filter: blur(1.5rem)
+}
+
+header {
+  transition: transform .3s ease-out;
+}
+header:hover {
+  transform: scale(1.1) skewY(-3deg);
+}
+label {
+  animation: jump 1s ease-in infinite;
+}
+
+.gen_container {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    margin: 1rem 0;
+}
+.gen_input > input {
+    align-self: stretch;
+    padding: 7px 10px;
+    font-size: 1rem;
+}
+.gen_input > input::placeholder {
+    font-size: .8rem;
+}
+.gen_input {
+    margin-left: 18%;
+    display: flex;
+    align-items: center;
+    gap: .5rem
+}
+
+p {
+  text-align: center;
+  color: #ddd;
+}
+
+button:hover {
+  background-color: #0056b3;
+}
+
+ul {
+    list-style: none;
+    width: 100%;
+}
+ul > li {
+  margin: 1.25rem 0 1rem 0;
+  width: 100%;
+}
+
+.loader {
+  margin-left: 2rem;
+  border: 4px solid #f3f3f3; /* Light grey */
+  border-top: 4px solid #3498db; /* Blue */
+  border-radius: 50%;
+  width: 30px;
+  height: 30px;
+  animation: spin 2s linear infinite;
+}
+
+.dot {
+  font-size: 1.25rem;
+
+  animation: show .75s infinite;
+}
+.dot2 {
+  animation-delay: .25s;
+}
+.dot3 {
+  animation-delay: .5s;
+}

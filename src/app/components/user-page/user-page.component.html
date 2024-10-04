@@ -1,0 +1,18 @@
+
+    <app-modal>
+        <div class="container" #container>
+            <div class="user_container" #userContainer>
+                <header>
+                    <img [src]="user()?.picture" alt="user">
+                    <p>More Info about <span class="userName">{{user()?.name}}</span></p>
+                </header>
+                <div class="user-info">
+                    <p>Gender: <span class="userInfo">{{user()?.gender}}</span></p>
+                    <p>Country: <span class="userInfo">{{user()?.country}}</span></p>
+                    <p>State: <span class="userInfo">{{user()?.state}}</span></p>
+                    <p>Username: <span class="userInfo">{{user()?.username}}</span></p>
+                    <p>Date: <span class="userInfo">{{user()?.date | date: 'mediumDate'}}</span></p>
+                </div>
+            </div>
+        </div>
+    </app-modal>

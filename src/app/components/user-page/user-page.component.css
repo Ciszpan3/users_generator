@@ -1,0 +1,99 @@
+:host {
+    position: fixed;
+    width: 100%;
+    min-height: 100vh;
+}
+.backdrop {
+    position: fixed;
+    z-index: 100;
+    top: 0;
+    left: 0;
+    min-width: 100%;
+    min-height: 100vh;
+    background: #2f2d2da0;
+}
+
+@property --angle {
+    syntax: "<angle>";
+    initial-value: 0deg;
+    inherits: false;
+}
+
+.container {
+    display: flex;
+    max-width: 350px;
+    width: 100%;
+    position: relative;
+    z-index: 101;
+}
+.user_container {
+    margin: 0 auto;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    padding: 1rem 1.5rem;
+    border-radius: 10px;
+    background: #111;
+    color: #ddd;
+    /* animation: slide-down 1s cubic-bezier(.98,.06,.24,1.51); */
+}
+.user_container::after, .user_container::before {
+    visibility: hidden;
+}
+.user_container.animated::after, .user_container.animated::before {
+    visibility: visible;
+}
+.user_container::after, .user_container::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    translate: -50% -50%;
+    width: 100%;
+    height: 100%;
+    padding: 3px 3px 3px 4px;
+    z-index: -1;
+    border-radius: 10px;
+    background-image: conic-gradient(from var(--angle), #c7cbff, #111, #051fca, #111);
+    animation: border-sides 2s linear infinite, show .75s 1s ease-in-out;
+}
+.user_container::before {
+    filter: blur(1.5rem)
+}
+.user-info {
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    flex-direction: column;
+    gap: 1rem;
+    margin-right: auto;
+}
+header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    margin-bottom: 1.25rem;
+    gap: .5rem;
+}
+header img {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    border: 1px solid #eee;
+}
+.userName {
+    font-size: 1.125rem;
+    background: linear-gradient(to right, #c7cbff, #051fca);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent; 
+}
+.userInfo {
+    background: linear-gradient(to right, #3325f7, #1a0aaa, #4635d9, #cbd9f3);
+    background-size: 200%;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent; 
+    animation: change-bg 3s linear infinite;
+}

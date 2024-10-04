@@ -1,0 +1,9 @@
+
+    <div class="modal_container" #app_modal>
+        @if(isOpen()) {
+            <div class="modal" @modalAnimation>
+                <ng-content/>
+            </div>
+        }
+    </div>
+
