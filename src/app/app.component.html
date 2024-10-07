@@ -21,7 +21,12 @@
         </li>
       </ul>
     } @else if (isGen()) {
-      <p>Generating {{form.controls.numberOfUsers.value! > 1 ? form.controls.numberOfUsers.value + ' more users' : form.controls.numberOfUsers.value + ' more user'}}
+      <p>Generating 
+        @if(!users().length) {
+          {{form.controls.numberOfUsers.value! > 1 ? form.controls.numberOfUsers.value + ' users' : form.controls.numberOfUsers.value + ' user'}}
+        } @else {
+          {{form.controls.numberOfUsers.value! > 1 ? form.controls.numberOfUsers.value + ' more users' : form.controls.numberOfUsers.value + ' more user'}}
+        }
         <span class="dot1 dot">.</span>
         <span class="dot2 dot">.</span>
         <span class="dot3 dot">.</span>

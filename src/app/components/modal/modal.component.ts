@@ -41,7 +41,6 @@ export class ModalComponent {
     this.modal.nativeElement.addEventListener('click', (e: FocusEvent) => {
       const target = e.target as HTMLElement
       if(target.className.includes('modal_container')) {
-        console.log('closing modal')
         this.modalService.closeModal()
         setTimeout(() => this.location.back(), 2000)
       }

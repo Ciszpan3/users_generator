@@ -39,8 +39,6 @@ export class UsersService {
     this.moreInfoUsers.update(users => [...users, userInfo])
   }
   deleteUser(user: User) {
-    console.log(user)
-    console.log(this.users().find(u => u.uuid === user.uuid))
     this.users.update(users => users.filter(u => u.uuid !== user.uuid))
     this.prevHovered.update(users => users.filter(u => u.userId !== user.uuid)) 
     this.moreInfoUsers.update(users => users.filter(u => u.uuid !== user.uuid))
@@ -62,7 +60,6 @@ export class UsersService {
       }
     }), delay(2000)).subscribe((response: any) => {
       if(!Array.isArray(response)) {
-        console.log(response)
         const newUser: User = {
           uuid: response.login.uuid,
           name: response.name.first + ' ' + response.name.last,
@@ -87,7 +84,6 @@ export class UsersService {
         }
         this.addUser(newUser)
         this.addInfo(allInfo)
-        console.log(this.allInfo())
         if (sub) {
           sub.unsubscribe()
         }
@@ -123,7 +119,6 @@ export class UsersService {
         }
       }
       this.isGenerating.set(false)
-      console.log('finished generating')
     })
   }
 }

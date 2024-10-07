@@ -1,5 +1,5 @@
-import { Component, ElementRef, ViewChild, computed, effect, inject, signal } from '@angular/core';
-import { Router, RouterOutlet } from '@angular/router';
+import { Component, ElementRef, ViewChild, computed, inject, signal } from '@angular/core';
+import { RouterOutlet } from '@angular/router';
 import { UserComponent } from './components/user/user.component';
 import { UsersService } from './users.service';
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
@@ -38,7 +38,7 @@ import { CommonModule } from '@angular/common';
       transition('* => *', [
         query(':enter', [
           style({ opacity: 0, transform: 'translateX(-100px) scale(0.6)' }),
-          stagger(300, [ // 100ms opóźnienia dla każdego następnego elementu
+          stagger(300, [
             animate('.3s cubic-bezier(.98,.06,.24,1.51)', keyframes([
               style({ opacity: 0, transform: 'translateX(-100px) scale(0.6)', offset: 0 }),
               style({ opacity: .5, transform: 'translateX(-50px) scale(0.8)', offset: 0.5 }),
@@ -52,7 +52,6 @@ import { CommonModule } from '@angular/common';
 })
 export class AppComponent {
   private usersService = inject(UsersService)
-  private router = inject(Router)
   @ViewChild('container') container!: ElementRef
   users = computed(() => this.usersService.allInfo())
   hoverInfo = computed(() => this.usersService.prevHoveredValues())
@@ -67,24 +66,11 @@ export class AppComponent {
     return user.uuid;
   }
 
-  constructor(){
-    effect(() => {
-      const allUsers = this.users()
-      const prevValues = this.hoverInfo()
-    })
-  }
-
   visibleHidden = () => {
-    console.log('app is not visible')
     this.isAppVisible.set(false)
     this.container.nativeElement.classList.remove('animationed')
   }
 
-  ngOnInit() {
-    this.form.valueChanges.subscribe({
-      next: (val) => console.log(val)
-    })
-  }
   ngAfterViewInit() {
     const target = this.container.nativeElement
     target.addEventListener('animationend', () => {

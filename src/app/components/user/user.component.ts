@@ -104,6 +104,6 @@ export class UserComponent implements OnInit, AfterViewInit {
     setTimeout(() => {
       this.router.navigate(['home', 'userPage', this.user()?.uuid])
       this.modalService.openModal()
-    }, 2000)
+    }, 1500)
   }
 }
