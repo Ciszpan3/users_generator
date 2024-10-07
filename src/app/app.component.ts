@@ -53,6 +53,7 @@ import { CommonModule } from '@angular/common';
 export class AppComponent {
   private usersService = inject(UsersService)
   @ViewChild('container') container!: ElementRef
+  @ViewChild('rocket_container') rocketContainer!: ElementRef
   users = computed(() => this.usersService.allInfo())
   hoverInfo = computed(() => this.usersService.prevHoveredValues())
   genButtonValue = signal<'User' | 'Users'>('User')
@@ -73,8 +74,20 @@ export class AppComponent {
 
   ngAfterViewInit() {
     const target = this.container.nativeElement
+    const rocket = this.rocketContainer.nativeElement
+    const body = document.querySelector('body')
     target.addEventListener('animationend', () => {
       target.classList.add('animationed')
+    })
+    rocket.addEventListener('click', () => {
+      rocket.classList.add('start_rocket')
+      body?.classList.add('flamingBg')
+    })
+    rocket.addEventListener('animationend', () => {
+      setTimeout(() => {
+        rocket.classList.remove('start_rocket')
+        body?.classList.remove('flamingBg')
+      }, 400)
     })
   }
 

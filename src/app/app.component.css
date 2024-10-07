@@ -113,7 +113,6 @@ ul > li {
 
 .dot {
   font-size: 1.25rem;
-
   animation: show .75s infinite;
 }
 .dot2 {
@@ -121,4 +120,70 @@ ul > li {
 }
 .dot3 {
   animation-delay: .5s;
+}
+
+.rocket_container {
+  position: fixed;
+  right: 15px;
+  bottom: 20px;
+  cursor: pointer
+}
+
+.rocket_container.start_rocket::before, .rocket_container.start_rocket::after {
+  display: block
+}
+.rocket_container.start_rocket {
+  animation: rocketLunch 3s cubic-bezier(.57,.37,.36,-0.51)
+}
+
+.rocket_container::before, .rocket_container::after {
+  display: none;
+  content: '';
+  position: absolute;
+  bottom: -22.5px;
+  left: 50%;
+  right: 50%;
+  translate: -50% -50%;
+  width: 20px;
+  height: 20px;
+  z-index: -1;
+  background: linear-gradient(to bottom, red, orange, yellow);
+  clip-path: polygon(35% 0, 65% 0, 100% 100%, 0 100%);
+  animation: rocketBoost 2.5s ease-in;
+}
+.rocket_container::after {
+  filter: blur(50px)
+}
+
+@keyframes rocketBoost {
+  0% {
+    bottom: -15px;
+    transform: scale(0)
+  }
+  25% {
+    transform: scale(.5)
+  }
+  50% {
+    bottom: -17.5px;
+    transform: scale(.75)
+  }
+  85% {
+    bottom: -16px;
+    transform: scale(.5)
+  }
+  100% {
+    bottom: -21px;
+    transform: scale(1)
+  }
+}
+@keyframes rocketLunch {
+  0% {
+    bottom: 20px;
+  }
+  50% {
+    bottom: 40%;
+  }
+  100% {
+    bottom: 110%
+  }
 }
