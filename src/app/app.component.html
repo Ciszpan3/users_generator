@@ -17,11 +17,11 @@
     @if (!isGen() && users().length > 0) {
       <ul [@userListAnim]>
         <li *ngFor="let user of users(); trackBy: trackByUser">
-          <app-user [user]="user" [userNumber]="users().indexOf(user) + 1" [visibleHidden]="visibleHidden" (delete)="reload()"></app-user>
+          <app-user [user]="user" [userNumber]="users().indexOf(user) + 1" [visibleHidden]="visibleHidden"></app-user>
         </li>
       </ul>
     } @else if (isGen()) {
-      <p>Generating 
+      <p>Generating {{form.controls.numberOfUsers.value! > 1 ? form.controls.numberOfUsers.value + ' more users' : form.controls.numberOfUsers.value + ' more user'}}
         <span class="dot1 dot">.</span>
         <span class="dot2 dot">.</span>
         <span class="dot3 dot">.</span>

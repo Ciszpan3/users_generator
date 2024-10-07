@@ -1,4 +1,4 @@
-import { AfterViewInit, ChangeDetectorRef, Component, ElementRef, Input, InputSignal, OnInit, QueryList, Signal, SimpleChanges, ViewChildren, computed, inject, input, output, signal } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, Input, OnInit, QueryList, ViewChildren, computed, inject, input, signal } from '@angular/core';
 import { PrevHoverValues, User } from './user.model';
 import { UsersService } from '../../users.service';
 import { userMap } from './userMap';
@@ -17,7 +17,7 @@ interface UserInterface {
   phone: string
   hoveredValue: string | number
   isVisible: 0 | 1
-  [key: string | number]: string | number; // Add an index signature
+  [key: string | number]: string | number;
 }
 
 @Component({
@@ -45,12 +45,11 @@ interface UserInterface {
     ])
   ]
 })
-export class UserComponent {
+export class UserComponent implements OnInit, AfterViewInit {
   @ViewChildren('icon') icons!: QueryList<ElementRef>
   private usersService = inject(UsersService)
   private router = inject(Router)
   private modalService = inject(ModalService)
-  private allInfoUsers = this.usersService.allInfo()
   user = input<User>()
   userNumber = input<number>()
   prevValues = computed(() => this.usersService.prevHoveredValues()) 

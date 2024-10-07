@@ -71,14 +71,7 @@ export class AppComponent {
     effect(() => {
       const allUsers = this.users()
       const prevValues = this.hoverInfo()
-      console.log('all users: ', allUsers)
-      console.log('prev values: ', prevValues)
     })
-  }
-
-  reload() {
-    console.log('reload')
-    this.usersService.reloadData()
   }
 
   visibleHidden = () => {

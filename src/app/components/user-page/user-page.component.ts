@@ -1,10 +1,9 @@
-import { Component, DestroyRef, ElementRef, ViewChild, computed, inject, input, signal } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
+import { Component, DestroyRef, ElementRef, ViewChild, inject, signal } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 import { UsersService } from '../../users.service';
 import { DatePipe } from '@angular/common';
 import { UserWithMoreInfo } from '../user/user.model';
 import { ModalComponent } from "../modal/modal.component";
-import { ModalService } from '../modal/modal.service';
 
 @Component({
   selector: 'app-user-page',
@@ -18,9 +17,7 @@ export class UserPageComponent {
   @ViewChild('userContainer') userContainer!: ElementRef;
   private activatedRoute = inject(ActivatedRoute)
   private destroyRef = inject(DestroyRef)
-  private router = inject(Router)
   private usersService = inject(UsersService)
-  private modalService = inject(ModalService)
   userId = signal<string>('')
   user = signal<UserWithMoreInfo | undefined>(undefined)
 
@@ -41,9 +38,5 @@ export class UserPageComponent {
     this.userContainer.nativeElement.addEventListener('animationend', () => {
       this.userContainer.nativeElement.classList.add('animated')
     })
-    // this.container.nativeElement.addEventListener('click', (e: FocusEvent) => {
-    //   const target = e.target as HTMLElement
-    //   console.log(target)
-    // })
   }
 }
